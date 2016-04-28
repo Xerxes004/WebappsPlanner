@@ -1,0 +1,6 @@
+- allow user to make and name plans
+- auto generate terms based on when the user is starting
+- add courses to seeds file
+- user is one to many with plans,
+- plans one to many with terms,
+- terms many to many with courses
