@@ -15,7 +15,7 @@ class PlansController < ApplicationController
   # GET /plans/1
   # GET /plans/1.json
   def show
-    @term = Term.all
+    @terms = Term.where(plan_id: @plan.id)
   end
 
   # GET /plans/new
@@ -32,9 +32,6 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @plan.user_id = current_user.id
-    puts '==================================================='
-    puts params
-    puts '==================================================='
     respond_to do |format|
       if @plan.save
         format.html { redirect_to @plan, notice: 'Plan was successfully created.' }
@@ -73,6 +70,9 @@ class PlansController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_plan
+      puts '==================================================='
+      puts params
+      puts '==================================================='
       @plan = Plan.find(params[:id])
     end
 

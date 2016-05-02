@@ -8,8 +8,12 @@
   <%= @plan.description %>
   <br>
   <strong>Terms:</strong>
-  <%= @term.where(plan_id: @plan.id).pluck(:term_name) %>
-  <p>Plan id is <%= @plan.id %></p>
+  <table>
+	  <% @terms.each do |term| %>
+	  	<tr><td><%= term.term_name %></td><td><%= link_to 'Edit', edit_term_path(term) %></td></tr>
+		<% end %>
+	</table>
+  <hr />
   <%= link_to 'Add Term', new_term_path(:plan_id => @plan.id) %>
 </p>
 
