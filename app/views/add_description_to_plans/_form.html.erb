@@ -1,0 +1,21 @@
+<%= form_for(@add_description_to_plan) do |f| %>
+  <% if @add_description_to_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@add_description_to_plan.errors.count, "error") %> prohibited this add_description_to_plan from being saved:</h2>
+
+      <ul>
+      <% @add_description_to_plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Add Description To Plans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @add_description_to_plans.each do |add_description_to_plan| %>
+      <tr>
+        <td><%= add_description_to_plan.description %></td>
+        <td><%= link_to 'Show', add_description_to_plan %></td>
+        <td><%= link_to 'Edit', edit_add_description_to_plan_path(add_description_to_plan) %></td>
+        <td><%= link_to 'Destroy', add_description_to_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Add description to plan', new_add_description_to_plan_path %>
