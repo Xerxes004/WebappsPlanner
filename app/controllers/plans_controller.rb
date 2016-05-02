@@ -15,6 +15,7 @@ class PlansController < ApplicationController
   # GET /plans/1
   # GET /plans/1.json
   def show
+    @term = Term.all
   end
 
   # GET /plans/new

@@ -1,4 +1,5 @@
 class TermsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_term, only: [:show, :edit, :update, :destroy]
 
   # GET /terms
@@ -25,7 +26,10 @@ class TermsController < ApplicationController
   # POST /terms.json
   def create
     @term = Term.new(term_params)
-
+    @term.plan_id = :plan
+    puts '==================================================='
+    puts params
+    puts '==================================================='
     respond_to do |format|
       if @term.save
         format.html { redirect_to @term, notice: 'Term was successfully created.' }
@@ -69,6 +73,6 @@ class TermsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def term_params
-      params.require(:term).permit(:term_name)
+      params.require(:term).permit(:term_name, :plan)
     end
 end
