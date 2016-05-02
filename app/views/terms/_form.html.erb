@@ -13,8 +13,9 @@
 
   <div class="field">
     <%= f.label :term_name %><br>
-    <%= f.text_field :term_name %><br>
-    <%= f.hidden_field :plan_id, :value => params[:plan_id] %>
+    <%= f.text_field :term_name %>
+    <% puts @planId %>
+    <%= hidden_field_tag 'plan', @term.plan_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

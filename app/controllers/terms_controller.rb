@@ -16,6 +16,7 @@ class TermsController < ApplicationController
   # GET /terms/new
   def new
     @term = Term.new
+    @term.plan_id = params[:plan]
   end
 
   # GET /terms/1/edit
@@ -26,11 +27,7 @@ class TermsController < ApplicationController
   # POST /terms.json
   def create
     @term = Term.new(term_params)
-    @term.plan_id = term_params[:plan_id]
-    puts '==================================================='
-    puts term_params
-    puts 'PLAN ID IS '+term_params[:plan_id]
-    puts '==================================================='
+    @term.plan_id = params[:plan]
     respond_to do |format|
       if @term.save
         format.html { redirect_to @term, notice: 'Term was successfully created.' }
