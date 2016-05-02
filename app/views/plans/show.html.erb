@@ -10,7 +10,7 @@
   <strong>Terms:</strong>
   <%= @term.where(plan_id: @plan.id).pluck(:term_name) %>
   <p>Plan id is <%= @plan.id %></p>
-  <%= link_to 'Add Term', new_term_path(:plan => @plan) %>
+  <%= link_to 'Add Term', new_term_path(:plan_id => @plan.id) %>
 </p>
 
 <%= link_to 'Edit', edit_plan_path(:plan) %> |

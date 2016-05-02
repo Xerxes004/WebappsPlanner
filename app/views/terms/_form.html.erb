@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :term_name %><br>
-    <%= f.text_field :term_name %>
+    <%= f.text_field :term_name %><br>
+    <%= f.hidden_field :plan_id, :value => params[:plan_id] %>
   </div>
   <div class="actions">
     <%= f.submit %>

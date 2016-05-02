@@ -26,9 +26,10 @@ class TermsController < ApplicationController
   # POST /terms.json
   def create
     @term = Term.new(term_params)
-    @term.plan_id = :plan
+    @term.plan_id = term_params[:plan_id]
     puts '==================================================='
-    puts params
+    puts term_params
+    puts 'PLAN ID IS '+term_params[:plan_id]
     puts '==================================================='
     respond_to do |format|
       if @term.save
@@ -73,6 +74,6 @@ class TermsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def term_params
-      params.require(:term).permit(:term_name, :plan)
+      params.require(:term).permit(:term_name, :plan_id)
     end
 end
