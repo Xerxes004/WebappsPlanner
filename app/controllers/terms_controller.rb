@@ -28,7 +28,6 @@ class TermsController < ApplicationController
   def create
     @term = Term.new(term_params)
     @term.plan_id = params[:plan]
-    
     respond_to do |format|
       if @term.save
         format.html { redirect_to @term, notice: 'Term was successfully created.' }
