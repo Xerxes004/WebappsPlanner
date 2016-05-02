@@ -6,19 +6,23 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user1 = User.new
-user1.login = "joe"
-user1.email = "joe@cedarville.edu" 
-user1.password = "password" 
-user1.password_confirmation = "password" 
-user1.save!
+joe = User.new
+joe.login = "joe"
+joe.email = "joe@cedarville.edu" 
+joe.password = "password" 
+joe.password_confirmation = "password" 
+joe.save!
 
-user2 = User.new
-user2.login = "pete"
-user2.email = "pete@cedarville.edu" 
-user2.password = "password" 
-user2.password_confirmation = "password" 
-user2.save!
+joe_plan = Plan.new
+joe_plan.name = 'Joe\'s plan'
+joe_plan.description = 'Joe\'s basic plan'
+joe_plan.user_id = joe.id
+joe_plan.save!
+
+joe_plan_term = Term.new
+joe_plan_term.plan_id = joe_plan.id
+joe_plan_term.term_name = 'Fall 2016'
+joe_plan_term.save!
 
 webapps = Course.new
 webapps.name = 'WebApps'
