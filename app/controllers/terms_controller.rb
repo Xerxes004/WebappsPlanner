@@ -5,7 +5,7 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.json
   def index
-    @terms = Term.all
+    @terms = Term.where(plan_id: :plan_id)
   end
 
   # GET /terms/1

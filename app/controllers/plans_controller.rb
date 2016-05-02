@@ -32,11 +32,23 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @plan.user_id = current_user.id
-    puts '==================================================='
-    puts params
-    puts '==================================================='
+    
     respond_to do |format|
       if @plan.save
+        fall = Term.new
+        spring = Term.new
+        summer = Term.new
+        fall.term_name = 'Fall 2016'
+        spring.term_name = 'Spring 2017'
+        summer.term_name = 'Summer 2017'
+        fall.plan_id = @plan.id
+        spring.plan_id = @plan.id
+        summer.plan_id = @plan.id
+        fall.save!
+        spring.save!
+        summer.save!
+
+
         format.html { redirect_to @plan, notice: 'Plan was successfully created.' }
         format.json { render :show, status: :created, location: @plan }
       else
