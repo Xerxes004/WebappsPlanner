@@ -10,7 +10,11 @@
   <strong>Terms:</strong>
   <table>
 	  <% @terms.each do |term| %>
-	  	<tr><td><%= term.term_name %></td><td><%= link_to 'Edit', edit_term_path(term) %></td></tr>
+	  	<tr>
+	  		<td><%= term.term_name %></td>
+	  		<td><%= link_to 'Edit', edit_term_path(term) %></td>
+	  		<td><%= link_to 'Show', term_path(term) %></td>
+	  	</tr>
 		<% end %>
 	</table>
   <hr />
