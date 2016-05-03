@@ -7,14 +7,26 @@
   <strong>Description: </strong>
   <%= @plan.description %>
   <br>
-  <table>
-    <tr><th><strong>Term</strong></th><th colspan="3"></th></tr>
+    <h3>Term</h3>
 	  <% @terms.each do |term| %>
+    <table>
 	  	<tr>
-	  		<td><%= term.term_name %></td>
-	  		<td><%= link_to 'Edit', edit_term_path(term) %></td>
-	  		<td><%= link_to 'Show', term_path(term) %></td>
-        <td><%= link_to 'Destroy', term, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <table>
+  	  		<tr>
+            <td><%= term.term_name %></td>
+    	  		<td><%= link_to 'Edit', edit_term_path(term) %></td>
+    	  		<td><%= link_to 'Show', term_path(term) %></td>
+            <td><%= link_to 'Destroy', term, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% Course.where(term_id: term.id).each do |course| %>
+          <tr>
+            <td></td>
+            <td><%= course.name %></td>
+            <td><%= course.course_id %></td>
+            <td><%= course.num_cred %></td>
+          </tr>
+          <% end %>
+        </table>
 	  	</tr>
 		<% end %>
 	</table>
