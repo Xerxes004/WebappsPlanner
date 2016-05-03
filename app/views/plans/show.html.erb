@@ -19,17 +19,18 @@
             <td><%= link_to 'Destroy', term, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
           <% Course.where(term_id: term.id).each do |course| %>
-          <tr>
-            <td></td>
-            <td><%= course.name %></td>
-            <td><%= course.course_id %></td>
-            <td><%= course.num_cred %></td>
-          </tr>
+            <tr>
+              <td></td>
+              <td><%= course.name %></td>
+              <td><%= course.course_id %></td>
+              <td><%= course.num_cred %></td>
+            </tr>
           <% end %>
         </table>
 	  	</tr>
-		<% end %>
-	</table>
+    </table>
+    <br>
+	<% end %>
   <br>
   <%= link_to 'Add Term', new_term_path(:plan_id => @plan.id) %>
   <hr />

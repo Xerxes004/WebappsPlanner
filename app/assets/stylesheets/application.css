@@ -59,7 +59,7 @@ table th {
 	box-sizing: border-box;
 	border: 1px solid grey;
 	border-radius: 5px;
-	height: calc(100vh - 20px);
+	min-height: calc(100vh - 20px);
 }
 
 
