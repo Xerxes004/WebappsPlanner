@@ -47,6 +47,10 @@ table td {
 	padding: 5px;
 }
 
+table th {
+	padding: 5px;
+}
+
 #wrapper {
 	width: 70vw;
 	display: block;

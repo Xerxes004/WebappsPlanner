@@ -6,12 +6,13 @@
   <br>
   <strong>Selected Courses:</strong>
   <table>
-  	<tr><th>Course Name</th><th>Course ID</th><th>Creds</th></tr>
+  	<tr><th>Course Name</th><th>Course ID</th><th>Creds</th><th></tr>
   	<% Course.where(term_id: @term.id).each do |course| %>
   	<tr>
   		<td><%= course.name %></td>
   		<td><%= course.course_id %></td>
   		<td><%= course.num_cred %></td>
+  		<td><%= link_to 'Remove', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   	</tr>
   	<% end %>
   </table>

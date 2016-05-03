@@ -59,20 +59,19 @@ puts '==================================='
 
     courses = params[:term][:courses]
 
-    #puts '==================================='
-    #puts params    
-    #puts '==================================='
-
     puts '==================================='
     courses.each do |course|
       if course != ""
         c = Course.find(course.to_i)
-        courseTaken = Course.new
-        courseTaken.term_id = @term.id
-        courseTaken.name = c.name
-        courseTaken.course_id = c.course_id
-        courseTaken.num_cred = c.num_cred
-        courseTaken.save!
+        # make sure we don't already have that course for this term
+        if not Course.exists?(course_id: c.course_id, term_id: @term.id)
+          courseTaken = Course.new
+          courseTaken.term_id = @term.id
+          courseTaken.name = c.name
+          courseTaken.course_id = c.course_id
+          courseTaken.num_cred = c.num_cred
+          courseTaken.save!
+        end
       end
     end
     puts '==================================='
