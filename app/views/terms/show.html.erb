@@ -3,6 +3,18 @@
 <p>
   <strong>Term name:</strong>
   <%= @term.term_name %>
+  <br>
+  <strong>Selected Courses:</strong>
+  <table>
+  	<tr><th>Course Name</th><th>Course ID</th><th>Creds</th></tr>
+  	<% Course.where(term_id: @term.id).each do |course| %>
+  	<tr>
+  		<td><%= course.name %></td>
+  		<td><%= course.course_id %></td>
+  		<td><%= course.num_cred %></td>
+  	</tr>
+  	<% end %>
+  </table>
 </p>
 
 <%= link_to 'Edit', edit_term_path(@term) %> |

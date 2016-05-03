@@ -20,7 +20,7 @@
   <h2>Add Courses</h2>
   <% #@courses.each do |course| %> 
     <div class="field">
-  <%= f.collection_check_boxes :courses, Course.all, :id, :name %>
+  <%= f.collection_check_boxes :courses, Course.where(term_id: nil), :id, :name %>
 
     </div>
   <% #end %>

@@ -29,6 +29,18 @@ class TermsController < ApplicationController
   def create
     @term = Term.new(term_params)
     @term.plan_id = params[:plan_id]
+    
+    courses = params[:course]
+
+puts '==================================='
+    courses.each do |course|
+      puts Course.find(course.id)
+    end
+puts '==================================='
+
+    puts '==================================='
+    puts params    
+    puts '==================================='
 
     respond_to do |format|
       if @term.save
@@ -44,6 +56,27 @@ class TermsController < ApplicationController
   # PATCH/PUT /terms/1
   # PATCH/PUT /terms/1.json
   def update
+
+    courses = params[:term][:courses]
+
+    #puts '==================================='
+    #puts params    
+    #puts '==================================='
+
+    puts '==================================='
+    courses.each do |course|
+      if course != ""
+        c = Course.find(course.to_i)
+        courseTaken = Course.new
+        courseTaken.term_id = @term.id
+        courseTaken.name = c.name
+        courseTaken.course_id = c.course_id
+        courseTaken.num_cred = c.num_cred
+        courseTaken.save!
+      end
+    end
+    puts '==================================='
+
     respond_to do |format|
       if @term.update(term_params)
         format.html { redirect_to @term, notice: 'Term was successfully updated.' }
@@ -77,6 +110,6 @@ class TermsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def term_params
-      params.require(:term).permit(:term_name, :plan_id)
+      params.require(:term).permit(:term_name, :plan_id, :term)
     end
 end
