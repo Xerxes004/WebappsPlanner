@@ -76,6 +76,10 @@ class PlansController < ApplicationController
   # POST /plans
   # POST /plans.json
   def create
+    puts '=============================='
+    puts params
+    puts '=============================='
+    starting_year = params[:post][:starting_year]
     @plan = Plan.new(plan_params)
     @plan.user_id = current_user.id
     
@@ -85,9 +89,10 @@ class PlansController < ApplicationController
         fall = Term.new
         spring = Term.new
         summer = Term.new
-        fall.term_name = 'Fall 2016'
-        spring.term_name = 'Spring 2017'
-        summer.term_name = 'Summer 2017'
+        fall.term_name = 'Fall ' + starting_year
+        starting_year = (starting_year.to_i + 1).to_s
+        spring.term_name = 'Spring ' + starting_year
+        summer.term_name = 'Summer ' + starting_year
         fall.plan_id = @plan.id
         spring.plan_id = @plan.id
         summer.plan_id = @plan.id
@@ -139,6 +144,6 @@ class PlansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plan_params
-      params.require(:plan).permit(:name, :user_id, :description, :id)
+      params.require(:plan).permit(:name, :user_id, :description, :id, :starting_year)
     end
 end

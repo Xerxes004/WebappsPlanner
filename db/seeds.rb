@@ -56,6 +56,67 @@ algorithms.num_cred = 3
 algorithms.course_id = 'CS-2210'
 algorithms.save!
 
+algorithms = Course.new
+algorithms.name = 'PACL'
+algorithms.num_cred = 3
+algorithms.course_id = 'PEF-1990'
+algorithms.save!
+
+algorithms = Course.new
+algorithms.name = 'Politics'
+algorithms.num_cred = 3
+algorithms.course_id = 'GSS-1100'
+algorithms.save!
+
+algorithms = Course.new
+algorithms.name = 'Databases'
+algorithms.num_cred = 3
+algorithms.course_id = 'CS-3610'
+algorithms.save!
+
+algorithms = Course.new
+algorithms.name = 'Theology 2'
+algorithms.num_cred = 3
+algorithms.course_id = 'BTGE-3765'
+algorithms.save!
+
+algorithms = Course.new
+algorithms.name = 'Physics 2'
+algorithms.num_cred = 3
+algorithms.course_id = 'PHYS-2120'
+algorithms.save!
+
+
+algorithms = Course.new
+algorithms.name = 'US History 1'
+algorithms.num_cred = 3
+algorithms.course_id = 'HIST-1110'
+algorithms.save!
+
+algorithms = Course.new
+algorithms.name = 'Operating Systems'
+algorithms.num_cred = 3
+algorithms.course_id = 'CS-3310'
+algorithms.save!
+
+algorithms = Course.new
+algorithms.name = 'Theology 1'
+algorithms.num_cred = 3
+algorithms.course_id = 'BTGE-3755'
+algorithms.save!
+
+algorithms = Course.new
+algorithms.name = 'Discrete Math'
+algorithms.num_cred = 3
+algorithms.course_id = 'CS-2510'
+algorithms.save!
+
+algorithms = Course.new
+algorithms.name = 'Underwater Basketweaving'
+algorithms.num_cred = 3
+algorithms.course_id = 'ART-4990'
+algorithms.save!
+
 
 
 

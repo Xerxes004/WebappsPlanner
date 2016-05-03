@@ -30,10 +30,36 @@ class TermsController < ApplicationController
     @term = Term.new(term_params)
     @term.plan_id = params[:plan_id]
     
-    courses = params[:course]
-
     respond_to do |format|
       if @term.save
+
+
+        courses = params[:term][:courses]
+
+        puts '==================================='
+        puts params
+        puts '==================================='
+
+        courses.each do |course|
+          if course != ""
+
+            puts '==================================='
+            puts 'COURSE '
+            puts '==================================='
+            c = Course.find(course.to_i)
+            # make sure we don't already have that course for this term
+            if not Course.exists?(course_id: c.course_id, term_id: @term.id)
+              courseTaken = Course.new
+              courseTaken.term_id = @term.id
+              courseTaken.name = c.name
+              courseTaken.course_id = c.course_id
+              courseTaken.num_cred = c.num_cred
+              courseTaken.save!
+            end
+          end
+        end
+
+        
         format.html { redirect_to @term, notice: 'Term was successfully created.' }
         format.json { render :show, status: :created, location: @term }
       else

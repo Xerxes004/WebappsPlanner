@@ -15,7 +15,9 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %><br>
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description %><br>
+    <%= label(:post, :starting_year) %><br>
+    <%= text_field(:post, :starting_year) %>
   </div>
   <div class="actions">
     <%= f.submit %>
