@@ -21,6 +21,7 @@ class TermsController < ApplicationController
 
   # GET /terms/1/edit
   def edit
+    #@term[:courses] = Course.all
   end
 
   # POST /terms
