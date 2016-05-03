@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  resources :admins
   resources :terms 
   resources :courses
   resources :plans do
-     post 'duplicate'
-   end
+    post 'duplicate'
+  end
 
   devise_for :users, :controllers => {:registrations => 'registrations'}
   # The priority is based upon order of creation: first created -> highest priority.

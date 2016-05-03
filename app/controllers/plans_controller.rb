@@ -19,6 +19,8 @@ class PlansController < ApplicationController
   end
 
   def duplicate
+    puts '=========================================='
+      
     plan_id = params[:plan_id]
     
     plan = Plan.find(plan_id)
@@ -29,14 +31,17 @@ class PlansController < ApplicationController
     dupePlan.description = plan.description
     dupePlan.save!
 
-    terms = Term.where(id: plan_id)
+    puts 'NEW PLAN ID ' + dupePlan.id.to_s
+
+    terms = Term.where(plan_id: plan.id)
     #copy terms
     terms.each do |term|
       newTerm = Term.new
       newTerm.term_name = term.term_name
       newTerm.plan_id = dupePlan.id
       newTerm.save!
-
+      puts 'NEW TERM ID ' + newTerm.id.to_s
+    
       courses = Course.where(term_id: term.id)
       #copy courses
       courses.each do |course|
@@ -44,11 +49,16 @@ class PlansController < ApplicationController
         newCourse.name = course.name
         newCourse.num_cred = course.num_cred
         newCourse.course_id = course.course_id
-        newCourse.term_id = term.id
+        newCourse.term_id = newTerm.id
         newCourse.save!
+
+        puts 'NEW COURSE ID ' + newCourse.id.to_s
+    
       end
     end
 
+    puts '=========================================='
+    
     redirect_to plans_url
   end
 
