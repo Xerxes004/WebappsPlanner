@@ -35,6 +35,7 @@ class PlansController < ApplicationController
     
     respond_to do |format|
       if @plan.save
+        
         fall = Term.new
         spring = Term.new
         summer = Term.new
