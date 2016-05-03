@@ -32,16 +32,6 @@ class TermsController < ApplicationController
     
     courses = params[:course]
 
-puts '==================================='
-    courses.each do |course|
-      puts Course.find(course.id)
-    end
-puts '==================================='
-
-    puts '==================================='
-    puts params    
-    puts '==================================='
-
     respond_to do |format|
       if @term.save
         format.html { redirect_to @term, notice: 'Term was successfully created.' }
@@ -59,7 +49,6 @@ puts '==================================='
 
     courses = params[:term][:courses]
 
-    puts '==================================='
     courses.each do |course|
       if course != ""
         c = Course.find(course.to_i)
@@ -74,7 +63,6 @@ puts '==================================='
         end
       end
     end
-    puts '==================================='
 
     respond_to do |format|
       if @term.update(term_params)
@@ -101,9 +89,6 @@ puts '==================================='
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_term
-    puts '==================================='
-    puts params    
-    puts '==================================='
       @term = Term.find(params[:id])
     end
 

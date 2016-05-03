@@ -32,9 +32,29 @@
     <br>
 	<% end %>
   <br>
-  <%= link_to 'Add Term', new_term_path(:plan_id => @plan.id) %>
+  <%= link_to 'Add Term', new_term_path(:plan_id => @plan.id), action: :post %>
   <hr />
 </p>
-
+<% plan_id = @plan.id %>
 <%= link_to 'Edit', edit_plan_path(@plan.id) %> |
-<%= link_to 'Back to Plans', plans_path %> 
+<%= link_to 'Back to Plans', plans_path %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

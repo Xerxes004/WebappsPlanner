@@ -18,6 +18,42 @@ class PlansController < ApplicationController
     @terms = Term.where(plan_id: @plan.id)
   end
 
+  def duplicate
+    plan_id = params[:plan_id]
+    
+    plan = Plan.find(plan_id)
+
+    dupePlan = Plan.new
+    dupePlan.name = plan.name + ' (duplicated)'
+    dupePlan.user_id = plan.user_id
+    dupePlan.description = plan.description
+    dupePlan.save!
+
+    terms = Term.where(id: plan_id)
+    #copy terms
+    terms.each do |term|
+      newTerm = Term.new
+      newTerm.term_name = term.term_name
+      newTerm.plan_id = dupePlan.id
+      newTerm.save!
+
+      courses = Course.where(term_id: term.id)
+      #copy courses
+      courses.each do |course|
+        newCourse = Course.new
+        newCourse.name = course.name
+        newCourse.num_cred = course.num_cred
+        newCourse.course_id = course.course_id
+        newCourse.term_id = term.id
+        newCourse.save!
+      end
+    end
+
+    redirect_to plans_url
+  end
+
+  helper_method :duplicate
+
   # GET /plans/new
   def new
     @plan = Plan.new
