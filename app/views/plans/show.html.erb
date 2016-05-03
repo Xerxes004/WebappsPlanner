@@ -7,18 +7,20 @@
   <strong>Description: </strong>
   <%= @plan.description %>
   <br>
-  <strong>Terms:</strong>
   <table>
+    <tr><th><strong>Term</strong></th><th colspan="3"></th></tr>
 	  <% @terms.each do |term| %>
 	  	<tr>
 	  		<td><%= term.term_name %></td>
 	  		<td><%= link_to 'Edit', edit_term_path(term) %></td>
 	  		<td><%= link_to 'Show', term_path(term) %></td>
+        <td><%= link_to 'Destroy', term, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	  	</tr>
 		<% end %>
 	</table>
-  <hr />
+  <br>
   <%= link_to 'Add Term', new_term_path(:plan_id => @plan.id) %>
+  <hr />
 </p>
 
 <%= link_to 'Edit', edit_plan_path(:plan) %> |

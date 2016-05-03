@@ -16,7 +16,7 @@ class TermsController < ApplicationController
   # GET /terms/new
   def new
     @term = Term.new
-    @term.plan_id = params[:plan]
+    @term.plan_id = params[:plan_id]
   end
 
   # GET /terms/1/edit
@@ -27,7 +27,8 @@ class TermsController < ApplicationController
   # POST /terms.json
   def create
     @term = Term.new(term_params)
-    @term.plan_id = params[:plan]
+    @term.plan_id = params[:plan_id]
+
     respond_to do |format|
       if @term.save
         format.html { redirect_to @term, notice: 'Term was successfully created.' }
@@ -56,9 +57,10 @@ class TermsController < ApplicationController
   # DELETE /terms/1
   # DELETE /terms/1.json
   def destroy
+    plan_id = @term.plan_id
     @term.destroy
     respond_to do |format|
-      format.html { redirect_to terms_url, notice: 'Term was successfully destroyed.' }
+      format.html { redirect_to plan_url(plan_id), notice: 'Term was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,6 +68,11 @@ class TermsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_term
+
+
+    puts '==================================='
+    puts params    
+    puts '==================================='
       @term = Term.find(params[:id])
     end
 

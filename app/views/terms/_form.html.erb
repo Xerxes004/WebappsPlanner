@@ -15,7 +15,7 @@
     <%= f.label :term_name %><br>
     <%= f.text_field :term_name %>
     <% puts @planId %>
-    <%= hidden_field_tag 'plan', @term.plan_id %>
+    <%= hidden_field_tag 'plan_id', @term.plan_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -49,7 +49,6 @@ class PlansController < ApplicationController
         spring.save!
         summer.save!
 
-
         format.html { redirect_to @plan, notice: 'Plan was successfully created.' }
         format.json { render :show, status: :created, location: @plan }
       else
@@ -86,14 +85,11 @@ class PlansController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_plan
-      puts '==================================================='
-      puts params
-      puts '==================================================='
       @plan = Plan.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plan_params
-      params.require(:plan).permit(:name, :user_id, :description, :id)
+      params.require(:plan).permit(:name, :user_id, :description)
     end
 end
