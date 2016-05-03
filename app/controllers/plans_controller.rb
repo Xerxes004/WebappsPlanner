@@ -85,6 +85,9 @@ class PlansController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_plan
+      puts '==================================='
+      puts params    
+      puts '==================================='
       @plan = Plan.find(params[:id])
     end
 
