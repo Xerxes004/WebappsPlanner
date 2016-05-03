@@ -14,9 +14,17 @@
   <div class="field">
     <%= f.label :term_name %><br>
     <%= f.text_field :term_name %>
-    <% puts @planId %>
     <%= hidden_field_tag 'plan_id', @term.plan_id %>
   </div>
+
+  <h2>Add Courses</h2>
+  <% #@courses.each do |course| %> 
+    <div class="field">
+  <%= f.collection_check_boxes :courses, Course.all, :id, :name %>
+
+    </div>
+  <% #end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
